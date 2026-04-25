@@ -35,7 +35,7 @@ spec:
       project: rxpulse
 
       source:
-        repoURL: https://github.com/KONDOJUVINAYKUMAR08/rxpulse-helm.git
+        repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
         targetRevision: HEAD
         path: "{{ '{{' }} .chart {{ '}}' }}"
         helm:
