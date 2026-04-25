@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: frontend
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     app: frontend
     app.kubernetes.io/name: frontend
@@ -37,6 +39,9 @@ spec:
             runAsNonRoot: {{ .Values.securityContext.runAsNonRoot }}
             runAsUser: {{ .Values.securityContext.runAsUser }}
             runAsGroup: {{ .Values.securityContext.runAsGroup }}
+          envFrom:
+            - secretRef:
+                name: rxpulse-secrets
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:

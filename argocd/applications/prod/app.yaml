@@ -1,0 +1,76 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rxpulse-prod
+  namespace: argocd
+  labels:
+    environment: prod
+spec:
+  project: rxpulse
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rxpulse-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  sources:
+    # 1. Namespace & Sealed Secrets
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: environments/prod
+      directory:
+        include: '*.yaml'
+
+    # 2. Infra Base
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: infra/base
+      helm:
+        valueFiles:
+          - ../../environments/prod/values.yaml
+
+    # 3. MongoDB
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: infra/mongodb
+      helm:
+        valueFiles:
+          - ../../environments/prod/values.yaml
+
+    # 4. Gateway
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: infra/gateway
+      helm:
+        valueFiles:
+          - ../../environments/prod/values.yaml
+
+    # 5. Services
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: charts/user
+      helm:
+        valueFiles:
+          - ../../environments/prod/values.yaml
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: charts/catalog
+      helm:
+        valueFiles:
+          - ../../environments/prod/values.yaml
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: charts/inventory
+      helm:
+        valueFiles:
+          - ../../environments/prod/values.yaml
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: charts/frontend
+      helm:
+        valueFiles:
+          - ../../environments/prod/values.yaml
