@@ -17,7 +17,7 @@ inventory:
 user:
   replicaCount: 2
   image:
-    tag: stable
+    tag: user-v0.0.1
 frontend:
   replicaCount: 3
   image:
