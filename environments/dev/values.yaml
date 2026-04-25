@@ -5,23 +5,23 @@ global:
 catalog:
   replicaCount: 1
   image:
-    tag: initial
+    tag: develop-ae9cda99
   seedJob:
     enabled: true
 inventory:
   replicaCount: 1
   image:
-    tag: latest
+    tag: develop-e5f40b3f
   seedJob:
     enabled: true
 user:
   replicaCount: 1
   image:
-    tag: latest
+    tag: develop-57c08004
 frontend:
   replicaCount: 2
   image:
-    tag: v3
+    tag: develop-f9c8e208
   hpa:
     enabled: true
     minReplicas: 2
