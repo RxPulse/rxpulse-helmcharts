@@ -18,7 +18,12 @@ spec:
       - CreateNamespace=true
       - ServerSideApply=true
   sources:
-    # 1. Namespace & Sealed Secrets
+    # 0. Values reference source (repo root, used by $values below)
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: develop
+      ref: values
+
+    # 1. Namespace & Sealed Secrets (raw YAMLs)
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
       targetRevision: develop
       path: environments/dev
@@ -31,7 +36,7 @@ spec:
       path: infra/base
       helm:
         valueFiles:
-          - environments/dev/values.yaml
+          - $values/environments/dev/values.yaml
 
     # 3. MongoDB
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
@@ -39,7 +44,7 @@ spec:
       path: infra/mongodb
       helm:
         valueFiles:
-          - environments/dev/values.yaml
+          - $values/environments/dev/values.yaml
 
     # 4. Gateway
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
@@ -47,30 +52,33 @@ spec:
       path: infra/gateway
       helm:
         valueFiles:
-          - environments/dev/values.yaml
+          - $values/environments/dev/values.yaml
 
-    # 5. Services
+    # 5. Microservices
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
       targetRevision: develop
       path: charts/user
       helm:
         valueFiles:
-          - environments/dev/values.yaml
+          - $values/environments/dev/values.yaml
+
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
       targetRevision: develop
       path: charts/catalog
       helm:
         valueFiles:
-          - environments/dev/values.yaml
+          - $values/environments/dev/values.yaml
+
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
       targetRevision: develop
       path: charts/inventory
       helm:
         valueFiles:
-          - environments/dev/values.yaml
+          - $values/environments/dev/values.yaml
+
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
       targetRevision: develop
       path: charts/frontend
       helm:
         valueFiles:
-          - environments/dev/values.yaml
+          - $values/environments/dev/values.yaml
