@@ -53,6 +53,11 @@ spec:
                 configMapKeyRef:
                   name: {{ .Values.configMapName }}
                   key: NODE_ENV
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secretName }}
+                  key: MONGO_USER_URI
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
