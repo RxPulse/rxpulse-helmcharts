@@ -31,7 +31,7 @@ spec:
       path: infra/base
       helm:
         valueFiles:
-          - ../../environments/prod/values.yaml
+          - environments/prod/values.yaml
 
     # 3. MongoDB
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
@@ -39,7 +39,7 @@ spec:
       path: infra/mongodb
       helm:
         valueFiles:
-          - ../../environments/prod/values.yaml
+          - environments/prod/values.yaml
 
     # 4. Gateway
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
@@ -47,7 +47,7 @@ spec:
       path: infra/gateway
       helm:
         valueFiles:
-          - ../../environments/prod/values.yaml
+          - environments/prod/values.yaml
 
     # 5. Services
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
@@ -55,22 +55,22 @@ spec:
       path: charts/user
       helm:
         valueFiles:
-          - ../../environments/prod/values.yaml
+          - environments/prod/values.yaml
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
       targetRevision: HEAD
       path: charts/catalog
       helm:
         valueFiles:
-          - ../../environments/prod/values.yaml
+          - environments/prod/values.yaml
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
       targetRevision: HEAD
       path: charts/inventory
       helm:
         valueFiles:
-          - ../../environments/prod/values.yaml
+          - environments/prod/values.yaml
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
       targetRevision: HEAD
       path: charts/frontend
       helm:
         valueFiles:
-          - ../../environments/prod/values.yaml
+          - environments/prod/values.yaml
