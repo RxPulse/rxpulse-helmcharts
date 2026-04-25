@@ -17,7 +17,7 @@ inventory:
 user:
   replicaCount: 1
   image:
-    tag: latest
+    tag: develop-57c08004
 frontend:
   replicaCount: 2
   image:
