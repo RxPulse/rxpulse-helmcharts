@@ -5,7 +5,7 @@ global:
 catalog:
   replicaCount: 1
   image:
-    tag: latest
+    tag: initial
   seedJob:
     enabled: true
 inventory:
