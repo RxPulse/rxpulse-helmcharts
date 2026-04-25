@@ -31,6 +31,7 @@ base:
   configMap:
     nodeEnv: development
 mongodb:
+  createStorageClass: true
   storage: 5Gi
   storageClass: nfs-client
   resources:
