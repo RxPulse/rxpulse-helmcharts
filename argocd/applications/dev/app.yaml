@@ -20,14 +20,14 @@ spec:
   sources:
     # 1. Namespace & Sealed Secrets
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-      targetRevision: HEAD
+      targetRevision: develop
       path: environments/dev
       directory:
         include: '*.yaml'
 
     # 2. Infra Base
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-      targetRevision: HEAD
+      targetRevision: develop
       path: infra/base
       helm:
         valueFiles:
@@ -35,7 +35,7 @@ spec:
 
     # 3. MongoDB
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-      targetRevision: HEAD
+      targetRevision: develop
       path: infra/mongodb
       helm:
         valueFiles:
@@ -43,7 +43,7 @@ spec:
 
     # 4. Gateway
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-      targetRevision: HEAD
+      targetRevision: develop
       path: infra/gateway
       helm:
         valueFiles:
@@ -51,25 +51,25 @@ spec:
 
     # 5. Services
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-      targetRevision: HEAD
+      targetRevision: develop
       path: charts/user
       helm:
         valueFiles:
           - environments/dev/values.yaml
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-      targetRevision: HEAD
+      targetRevision: develop
       path: charts/catalog
       helm:
         valueFiles:
           - environments/dev/values.yaml
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-      targetRevision: HEAD
+      targetRevision: develop
       path: charts/inventory
       helm:
         valueFiles:
           - environments/dev/values.yaml
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-      targetRevision: HEAD
+      targetRevision: develop
       path: charts/frontend
       helm:
         valueFiles:
