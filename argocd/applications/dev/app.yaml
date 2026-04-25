@@ -1,0 +1,78 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rxpulse-dev
+  namespace: argocd
+  labels:
+    environment: dev
+spec:
+  project: rxpulse
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rxpulse-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+  sources:
+    # 1. Sealed Secrets
+    # Excluded from ArgoCD sync until real secrets are committed to avoid sync failures.
+    # Uncomment the following lines when sealed-secret.yaml contains valid kubeseal output.
+    # - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+    #   targetRevision: HEAD
+    #   path: environments/dev
+    #   directory:
+    #     include: 'sealed-secret.yaml'
+
+    # 2. Infra Base
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: infra/base
+      helm:
+        valueFiles:
+          - ../../environments/dev/values.yaml
+
+    # 3. MongoDB
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: infra/mongodb
+      helm:
+        valueFiles:
+          - ../../environments/dev/values.yaml
+
+    # 4. Gateway
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: infra/gateway
+      helm:
+        valueFiles:
+          - ../../environments/dev/values.yaml
+
+    # 5. Services
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: charts/user
+      helm:
+        valueFiles:
+          - ../../environments/dev/values.yaml
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: charts/catalog
+      helm:
+        valueFiles:
+          - ../../environments/dev/values.yaml
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: charts/inventory
+      helm:
+        valueFiles:
+          - ../../environments/dev/values.yaml
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: charts/frontend
+      helm:
+        valueFiles:
+          - ../../environments/dev/values.yaml

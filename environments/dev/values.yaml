@@ -30,15 +30,6 @@ base:
   namespace: rxpulse-dev
   configMap:
     nodeEnv: development
-sealed-secrets:
-  secret:
-    mongoRootUsername: "admin"
-    mongoRootPassword: "RxPulse@Mongo2024"
-    mongoUserUri: "mongodb://mongo-user:27017/userdb"
-    mongoCatalogUri: "mongodb://mongo-catalog:27017/catalogdb"
-    mongoInventoryUri: "mongodb://mongo-inventory:27017/inventorydb"
-    jwtSecret: "rxpulse_jwt_super_secret_k8s_2024"
-    jwtExpiresIn: "7d"
 mongodb:
   storage: 5Gi
   storageClass: nfs-client
