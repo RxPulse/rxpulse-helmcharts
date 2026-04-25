@@ -2,6 +2,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: frontend
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     app: frontend
     app.kubernetes.io/name: frontend

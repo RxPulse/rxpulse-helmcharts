@@ -18,14 +18,12 @@ spec:
       - CreateNamespace=true
       - ServerSideApply=true
   sources:
-    # 1. Sealed Secrets
-    # Excluded from ArgoCD sync until real secrets are committed to avoid sync failures.
-    # Uncomment the following lines when sealed-secret.yaml contains valid kubeseal output.
-    # - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
-    #   targetRevision: HEAD
-    #   path: environments/dev
-    #   directory:
-    #     include: 'sealed-secret.yaml'
+    # 1. Namespace & Sealed Secrets
+    - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
+      targetRevision: HEAD
+      path: environments/dev
+      directory:
+        include: '*.yaml'
 
     # 2. Infra Base
     - repoURL: https://github.com/RxPulse/rxpulse-helmcharts.git
