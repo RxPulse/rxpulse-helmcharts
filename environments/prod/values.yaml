@@ -11,7 +11,7 @@ catalog:
 inventory:
   replicaCount: 2
   image:
-    tag: stable
+    tag: inventory-v0.0.1
   seedJob:
     enabled: true
 user:
