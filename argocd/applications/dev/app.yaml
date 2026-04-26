@@ -17,7 +17,15 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
+      - RespectIgnoreDifferences=true
   ignoreDifferences:
+  
+    - group: argoproj.io
+      kind: Rollout
+      jsonPointers:
+        - /spec/replicas
+        - /spec/paused
+        - /spec/restartAt
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
       jsonPointers:
