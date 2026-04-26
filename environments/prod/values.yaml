@@ -7,7 +7,7 @@ global:
       tag: frontend-v0.0.3
       replicaCount: 2
     user:
-      tag: user-v0.0.2
+      tag: v0.0.1
       replicaCount: 1
     catalog:
       tag: v0.0.1
