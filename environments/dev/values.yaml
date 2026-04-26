@@ -4,7 +4,7 @@ global:
   environment: dev
   services:
     frontend:
-      tag: develop-80ea5faf
+      tag: develop-e4ff3d5f
       replicaCount: 2
     user:
       tag: develop-8f27dcd3
