@@ -6,7 +6,8 @@ image:
 blueGreen:
   activeService: frontend-active
   previewService: frontend-preview
-  #autoPromotionEnabled: false
+  autoPromotionEnabled: false
+  autoPromotionSeconds: 0
   scaleDownDelaySeconds: 30
 
 service:
