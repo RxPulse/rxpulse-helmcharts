@@ -2,26 +2,27 @@
 global:
   namespace: rxpulse-dev
   environment: dev
+  services:
+    frontend:
+      tag: v3
+      replicaCount: 2
+    user:
+      tag: latest
+      replicaCount: 1
+    catalog:
+      tag: latest
+      replicaCount: 1
+    inventory:
+      tag: latest
+      replicaCount: 1
+
 catalog:
-  replicaCount: 1
-  image:
-    tag: develop-95d2f22a
   seedJob:
     enabled: true
 inventory:
-  replicaCount: 1
-  image:
-    tag: develop-34a02ff4
   seedJob:
     enabled: true
-user:
-  replicaCount: 1
-  image:
-    tag: develop-abe4cbdd
 frontend:
-  replicaCount: 2
-  image:
-    tag: develop-864985ef
   hpa:
     enabled: true
     minReplicas: 2

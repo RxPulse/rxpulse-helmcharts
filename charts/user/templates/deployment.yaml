@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/part-of: rxpulse
     app.kubernetes.io/managed-by: Helm
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.global.services.user.replicaCount }}
   selector:
     matchLabels:
       app: user-service
@@ -28,7 +28,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
         - name: user-service
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.global.services.user.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.targetPort }}
