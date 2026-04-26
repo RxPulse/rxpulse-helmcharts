@@ -2,28 +2,29 @@
 global:
   namespace: rxpulse-prod
   environment: prod
+  services:
+    frontend:
+      tag: frontend-v0.0.3
+      replicaCount: 2
+    user:
+      tag: user-v0.0.2
+      replicaCount: 1
+    catalog:
+      tag: catalog-v0.0.2
+      replicaCount: 1
+    inventory:
+      tag: inventory-v0.0.2
+      replicaCount: 1
+
 catalog:
-  replicaCount: 2
-  image:
-    tag: stable
   seedJob:
     enabled: true
 inventory:
-  replicaCount: 2
-  image:
-    tag: stable
   seedJob:
     enabled: true
-user:
-  replicaCount: 2
-  image:
-    tag: stable
 frontend:
-  replicaCount: 3
-  image:
-    tag: stable
   blueGreen:
-    autoPromotionEnabled: false   # Always manual promotion in prod
+    autoPromotionEnabled: false
   hpa:
     enabled: true
     minReplicas: 3
@@ -39,7 +40,6 @@ base:
   namespace: rxpulse-prod
   configMap:
     nodeEnv: production
-
 mongodb:
   createStorageClass: true
   storage: 20Gi
