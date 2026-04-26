@@ -7,7 +7,7 @@ global:
       tag: develop-c71d8476
       replicaCount: 2
     user:
-      tag: latest
+      tag: develop-8f27dcd3
       replicaCount: 1
     catalog:
       tag: develop-3f69a4aa
