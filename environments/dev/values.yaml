@@ -13,7 +13,7 @@ global:
       tag: develop-3f69a4aa
       replicaCount: 1
     inventory:
-      tag: latest
+      tag: develop-5b9aaaf4
       replicaCount: 1
 
 catalog:
