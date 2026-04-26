@@ -21,7 +21,7 @@ user:
 frontend:
   replicaCount: 2
   image:
-    tag: develop-f9c8e208
+    tag: develop-864985ef
   hpa:
     enabled: true
     minReplicas: 2
