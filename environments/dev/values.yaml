@@ -23,6 +23,8 @@ inventory:
   seedJob:
     enabled: true
 frontend:
+  blueGreen:
+    autoPromotionEnabled: false
   hpa:
     enabled: true
     minReplicas: 2
