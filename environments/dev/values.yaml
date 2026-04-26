@@ -11,7 +11,7 @@ catalog:
 inventory:
   replicaCount: 1
   image:
-    tag: develop-e5f40b3f
+    tag: develop-34a02ff4
   seedJob:
     enabled: true
 user:
