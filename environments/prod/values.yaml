@@ -13,7 +13,7 @@ global:
       tag: v0.0.1
       replicaCount: 1
     inventory:
-      tag: inventory-v0.0.2
+      tag: v0.0.1
       replicaCount: 1
 
 catalog:
