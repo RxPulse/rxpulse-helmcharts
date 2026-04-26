@@ -64,5 +64,5 @@ spec:
     blueGreen:
       activeService: {{ .Values.blueGreen.activeService }}
       previewService: {{ .Values.blueGreen.previewService }}
-      autoPromotionEnabled: {{ .Values.blueGreen.autoPromotionEnabled }}
+      autoPromotionEnabled: {{ .Values.frontend.blueGreen.autoPromotionEnabled }}
       scaleDownDelaySeconds: {{ .Values.blueGreen.scaleDownDelaySeconds }}

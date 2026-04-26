@@ -4,16 +4,16 @@ global:
   environment: dev
   services:
     frontend:
-      tag: v3
+      tag: develop-c71d8476
       replicaCount: 2
     user:
-      tag: latest
+      tag: develop-8f27dcd3
       replicaCount: 1
     catalog:
-      tag: latest
+      tag: develop-3f69a4aa
       replicaCount: 1
     inventory:
-      tag: latest
+      tag: develop-5b9aaaf4
       replicaCount: 1
 
 catalog:
@@ -23,6 +23,8 @@ inventory:
   seedJob:
     enabled: true
 frontend:
+  blueGreen:
+    autoPromotionEnabled: false
   hpa:
     enabled: true
     minReplicas: 2
