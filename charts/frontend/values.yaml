@@ -1,7 +1,7 @@
 
 image:
   repository: rxpulsehub/rxpulse-frontend
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 blueGreen:
   activeService: frontend-active

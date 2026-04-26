@@ -18,12 +18,25 @@ spec:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true
   ignoreDifferences:
+    # Argo Rollouts injects rollouts-pod-template-hash into Service selectors
+    # to isolate blue/green traffic. selfHeal MUST NOT revert these or the
+    # preview phase is bypassed and auto-promotion happens immediately.
+    - group: ""
+      kind: Service
+      name: frontend-active
+      jsonPointers:
+        - /spec/selector
+    - group: ""
+      kind: Service
+      name: frontend-preview
+      jsonPointers:
+        - /spec/selector
+    # Argo Rollouts sets restartAt during rollout restart operations.
     - group: argoproj.io
       kind: Rollout
       jsonPointers:
-        - /spec/replicas
-        - /spec/paused
         - /spec/restartAt
+    # Gateway controller mutates parentRefs/backendRefs with defaults.
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
       jsonPointers:
