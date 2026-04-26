@@ -4,7 +4,7 @@ global:
   environment: dev
   services:
     frontend:
-      tag: v3
+      tag: develop-c71d8476
       replicaCount: 2
     user:
       tag: latest
