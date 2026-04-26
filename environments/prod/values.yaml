@@ -21,7 +21,7 @@ user:
 frontend:
   replicaCount: 3
   image:
-    tag: frontend-v0.0.2
+    tag: frontend-v0.0.3
   blueGreen:
     autoPromotionEnabled: false   # Always manual promotion in prod
   hpa:
